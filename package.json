@@ -1,0 +1,24 @@
+{
+  "name": "knct_iwsq_teams",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/kobakazu0429/knct_iwsq_teams.git",
+  "author": "kobakazu0429 <kobakazu10@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "export-users": "ts-node --transpileOnly bin/export-users.ts",
+    "invite-all-tas-to-missing-private-channels": "ts-node --transpileOnly bin/invite-all-tas-to-missing-private-channels.ts",
+    "post-all-channel-info": "ts-node --transpileOnly bin/post-all-channel-info.ts"
+  },
+  "dependencies": {
+    "axios": "^1.2.2",
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/google-spreadsheet": "^3.3.0",
+    "@types/node": "^18.11.18",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

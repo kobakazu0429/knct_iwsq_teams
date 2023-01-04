@@ -20,7 +20,7 @@ https://developer.microsoft.com/en-us/graph/graph-explorer
 #### GOOGLE_SERVICE_CLIENT_EMAIL と GOOGLE_SERVICE_PRIVATE_KEY
 
 GCP で取得してください
-`GOOGLE_SERVICE_CLIENT_EMAIL`を Google グループに招待してください
+`GOOGLE_SERVICE_CLIENT_EMAIL`を TA 一覧のスプレッドシートに閲覧者として招待してください
 
 ## 使い方
 

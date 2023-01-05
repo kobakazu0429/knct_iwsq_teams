@@ -108,3 +108,26 @@ export const inviteUserToChannel = async (
     }
   );
 };
+
+export const inviteUserToTeam = async (userIds: string[], isOwner: boolean) => {
+  const payload = {
+    users: userIds.map((userId) => ({
+      mri: `8:orgid:${userId}`,
+      role: Number(isOwner),
+    })),
+    groupId: env.TEAM_ID,
+  };
+
+  const res = await axios.put(
+    `https://teams.microsoft.com/api/mt/apac/beta/teams/${env.GENERAL_CHANNEL_ID}/bulkUpdateRoledMembers?allowBotsInChannel=true`,
+    payload,
+    {
+      headers: {
+        authorization: `Bearer ${env.TEAMS_AUTHTOKEN}`,
+        "x-skypetoken": env.SKYPETOKEN_ASM_TOKEN,
+      },
+    }
+  );
+
+  return res;
+};

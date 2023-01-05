@@ -45,6 +45,26 @@ $ yarn run invite-all-tas-to-missing-private-channels
 $ yarn run invite-all-tas-to-missing-private-channels --dry-run
 ```
 
+### `invite-to-team`
+
+チームに招待するスクリプト
+
+ブラウザで Teams を開き次の 2 つの Cookie を取得し、.env に追記してください
+
+- `authtoken`
+  - value: Bearer=JWT&Origin=https://teams.microsoft.com
+  - required: JWT
+- `skypetoken_asm`
+  - value: JWT
+  - required: JWT
+
+```shell
+$ yarn run invite-to-team --user-email=m22-abcd,e22-abcd,..
+$ yarn run invite-to-team --user-id=uuid1,uuid2,...
+$ yarn run invite-to-team --user-email=m22-abcd,e22-abcd,.. --user-id=uuid1,uuid2,...
+$ yarn run invite-to-team --user-email=m22-abcd,e22-abcd,.. --user-id=uuid1,uuid2,... --dry-run
+```
+
 ### `post-all-channel-info`
 
 チーム内のプライベートチャネルを含む全チャネル情報を General に流すスクリプト

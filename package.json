@@ -8,6 +8,7 @@
   "scripts": {
     "export-users": "ts-node --transpileOnly bin/export-users.ts",
     "invite-all-tas-to-missing-private-channels": "ts-node --transpileOnly bin/invite-all-tas-to-missing-private-channels.ts",
+    "invite-to-team": "ts-node --transpileOnly bin/invite-to-team.ts",
     "post-all-channel-info": "ts-node --transpileOnly bin/post-all-channel-info.ts"
   },
   "dependencies": {

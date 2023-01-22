@@ -276,6 +276,11 @@ json-bigint@^1.0.0:
   dependencies:
     bignumber.js "^9.0.0"
 
+just-remove@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/just-remove/-/just-remove-3.2.0.tgz#bbbc92c32b787811052a15be33c2256db0ce796e"
+  integrity sha512-gR3EOFIkZapF3g0K4IRRqH4lM+czJEfaOFgrwZl5vNfVUeJqfke9/L67Mf3CgnT3j2HM46C+mdCRvqaCD77Nqg==
+
 jwa@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/jwa/-/jwa-2.0.0.tgz#a7e9c3f29dae94027ebcaf49975c9345593410fc"

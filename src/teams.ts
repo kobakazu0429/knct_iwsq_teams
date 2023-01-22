@@ -10,6 +10,36 @@ export const client = axios.create({
   },
 });
 
+const request = async <Response>(
+  url?: string,
+  result: Response[] = [],
+  length: number = -1
+): Promise<Response[]> => {
+  if (!url || url === "") return result;
+
+  const res = await client.get<{
+    "@odata.context": string;
+    "@odata.count": number;
+    "@odata.nextLink": string;
+    value: Response[];
+  }>(url, {
+    headers: {
+      ConsistencyLevel: "eventual",
+    },
+  });
+
+  result.push(...res.data.value);
+
+  if (length === -1) length = res.data["@odata.count"];
+  console.log(`${result.length} / ${length}`);
+
+  if (res.data.value.length !== 0) {
+    return request(res.data["@odata.nextLink"], result, length);
+  } else {
+    return result;
+  }
+};
+
 export const getAllChannels = async (teamId: string) => {
   const GROUP_ORDER_PREFIXS = ["部活", "IWテーマ", "授業"];
 
@@ -50,42 +80,18 @@ export const getChannelMembers = async (teamId: string, channelId: string) => {
   return members;
 };
 
+export const getTeamMembers = async (teamId: string) => {
+  const members = await request<Member>(`teams/${teamId}/members`);
+  return members!;
+};
+
 export const getUsers = async (emailDomain: string) => {
   if (!emailDomain.startsWith("@")) {
     throw new Error("`emailDomain` must start with @");
   }
-
-  const users: User[] = [];
-  let length = -1;
-
-  const request = async (url: string) => {
-    if (!url || url === "") return;
-
-    const res = await client.get<{
-      "@odata.context": string;
-      "@odata.count": number;
-      "@odata.nextLink": string;
-      value: User[];
-    }>(url, {
-      headers: {
-        ConsistencyLevel: "eventual",
-      },
-    });
-
-    users.push(...res.data.value);
-
-    if (length === -1) length = res.data["@odata.count"];
-    console.log(`${users.length} / ${length}`);
-
-    if (res.data.value.length !== 0) {
-      await request(res.data["@odata.nextLink"]);
-    }
-  };
-
-  await request(
+  const users = await request<User>(
     `/users?$filter=endswith(mail,'${emailDomain}')&$orderby=userPrincipalName&$count=true`
   );
-
   return users;
 };
 
@@ -124,7 +130,7 @@ export const inviteUserToTeam = async (userIds: string[], isOwner: boolean) => {
     {
       headers: {
         authorization: `Bearer ${env.TEAMS_AUTHTOKEN}`,
-        "x-skypetoken": env.SKYPETOKEN_ASM_TOKEN,
+        "x-skypetoken": env.TEAMS_SKYPETOKEN_ASM,
       },
     }
   );

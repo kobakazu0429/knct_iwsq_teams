@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "export-users": "ts-node --transpileOnly bin/export-users.ts",
+    "invite-recent-using-user-to-team": "ts-node --transpileOnly bin/invite-recent-using-user-to-team.ts",
     "invite-all-tas-to-missing-private-channels": "ts-node --transpileOnly bin/invite-all-tas-to-missing-private-channels.ts",
     "invite-to-team": "ts-node --transpileOnly bin/invite-to-team.ts",
     "post-all-channel-info": "ts-node --transpileOnly bin/post-all-channel-info.ts"
@@ -14,7 +15,8 @@
   "dependencies": {
     "axios": "^1.2.2",
     "dotenv": "^16.0.3",
-    "google-spreadsheet": "^3.3.0"
+    "google-spreadsheet": "^3.3.0",
+    "just-remove": "^3.2.0"
   },
   "devDependencies": {
     "@types/google-spreadsheet": "^3.3.0",

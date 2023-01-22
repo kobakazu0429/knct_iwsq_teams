@@ -65,6 +65,14 @@ $ yarn run invite-to-team --user-email=m22-abcd,e22-abcd,.. --user-id=uuid1,uuid
 $ yarn run invite-to-team --user-email=m22-abcd,e22-abcd,.. --user-id=uuid1,uuid2,... --dry-run
 ```
 
+### `invite-recent-using-user-to-team`
+
+直近の利用者をチームに招待するスクリプト
+
+```shell
+$ yarn run invite-recent-using-user-to-team
+```
+
 ### `post-all-channel-info`
 
 チーム内のプライベートチャネルを含む全チャネル情報を General に流すスクリプト

@@ -10,7 +10,8 @@
     "invite-recent-using-user-to-team": "ts-node --transpileOnly bin/invite-recent-using-user-to-team.ts",
     "invite-all-tas-to-missing-private-channels": "ts-node --transpileOnly bin/invite-all-tas-to-missing-private-channels.ts",
     "invite-to-team": "ts-node --transpileOnly bin/invite-to-team.ts",
-    "post-all-channel-info": "ts-node --transpileOnly bin/post-all-channel-info.ts"
+    "post-all-channel-info": "ts-node --transpileOnly bin/post-all-channel-info.ts",
+    "display-private-channels": "ts-node --transpileOnly bin/display-private-channels"
   },
   "dependencies": {
     "axios": "^1.2.2",

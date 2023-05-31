@@ -137,3 +137,43 @@ export const inviteUserToTeam = async (userIds: string[], isOwner: boolean) => {
 
   return res;
 };
+
+export const changeRoleToUserInChannel = async (
+  channelId: string,
+  userId: string
+) => {
+  const payload = {
+    mri: `8:orgid:${userId}`,
+    role: "User",
+  };
+
+  const res = await axios.patch(
+    `https://teams.microsoft.com/api/mt/apac/beta/teams/${env.GENERAL_CHANNEL_ID}/channels/${channelId}/members/8:orgid:${userId}`,
+    payload,
+    {
+      headers: {
+        authorization: `Bearer ${env.TEAMS_AUTHTOKEN}`,
+        "x-skypetoken": env.TEAMS_SKYPETOKEN_ASM,
+      },
+    }
+  );
+
+  return res;
+};
+
+export const deleteUserFromChannel = async (
+  channelId: string,
+  userId: string
+) => {
+  const res = await axios.delete(
+    `https://teams.microsoft.com/api/mt/apac/beta/teams/${env.GENERAL_CHANNEL_ID}/channels/${channelId}/members/8:orgid:${userId}`,
+    {
+      headers: {
+        authorization: `Bearer ${env.TEAMS_AUTHTOKEN}`,
+        "x-skypetoken": env.TEAMS_SKYPETOKEN_ASM,
+      },
+    }
+  );
+
+  return res;
+};
